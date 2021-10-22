@@ -4,9 +4,10 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+
 import { Connection } from './core'
 
-import wordAPI from './api/word';
+import userAPI from './api/user';
 
 const connection = new Connection();
 
@@ -20,13 +21,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const router = express.Router();
-router.get("/words", wordAPI.find); // GET /api/words
-router.post("/words", wordAPI.save); // POST /api/posts
+router.get("/user", userAPI.find); // GET /api/words
+router.post("/user", userAPI.save); // POST /api/posts
 
 
 app.use("/api", router);
 
 app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+
 app.listen(process.env.PORT || 3000, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${process.env.PORT || 3000}`);
 });

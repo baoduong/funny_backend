@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 
-const WordShema = new mongoose.Schema({
-    name: {
+const UserShema = new mongoose.Schema({
+    email: {
         type: String,
         required: true
     },
-    description: {
+    password: {
         type: String,
         required: true
     }
 })
 
-export default WordShema;
+export default UserShema;
