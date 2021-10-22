@@ -7,8 +7,9 @@ export abstract class IUserServices {
 
 export class UserService {
 
-    static find() {
-        return UserModel.find({})
+    static auth(email: string, password: string) {
+        const query = { email: email, password: password }
+        return UserModel.find(query)
     }
 
     static async save(email: string, password: string) {

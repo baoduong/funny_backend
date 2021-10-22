@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import { Connection } from './core'
 
 import userAPI from './api/user';
+import videoAPI from './api/video';
 
 const connection = new Connection();
 
@@ -17,13 +18,16 @@ connection.connect();
 const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(bodyParser.json());
 
 const router = express.Router();
-router.get("/user", userAPI.find); // GET /api/words
-router.post("/user", userAPI.save); // POST /api/posts
-
+router.post("/auth", userAPI.auth); // POST /api/auth
+router.post("/user", userAPI.save); // POST /api/user
+router.get("/video", videoAPI.fetch)
+router.post("/video", videoAPI.save)
 
 app.use("/api", router);
 
