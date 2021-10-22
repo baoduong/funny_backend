@@ -1,1 +1,1 @@
-web:node build/app.jss
+web:node build/app.js
