@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
+const uri = process.env.MONGODB_URI;
+
 export class Connection {
     public connect() {
-        mongoose.connect("mongodb://localhost:27017/englishApp");
+        mongoose.connect(String(uri));
     }
 }
