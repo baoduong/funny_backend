@@ -25,9 +25,9 @@ router.post("/words", wordAPI.save); // POST /api/posts
 
 
 app.use("/api", router);
-const PORT = 8000;
+
 app.get('/', (req, res) => res.send('Express + TypeScript Server'));
-app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${process.env.PORT || 3000}`);
 });
 
